@@ -24,15 +24,15 @@ class Quarto:
 
 
 class Reserva:
-    def __init__(self, dono_reserva: Cliente, quarto_resevado: Quarto, data_check_in: str, data_check_out: str, status_reserva: str):
+    def __init__(self, dono_reserva: Cliente, quarto_reservado: Quarto, data_check_in: str, data_check_out: str, status_reserva: str):
         self.dono_reserva: Cliente = dono_reserva
-        self.quarto_resevado: Quarto = quarto_resevado
+        self.quarto_reservado: Quarto = quarto_reservado
         self.data_check_in: str = data_check_in
         self.data_check_out: str = data_check_out
         self.status_reserva: str = status_reserva
 
     def __str__(self):
-        return f"Cliente: {self.dono_reserva} | {self.quarto_resevado} | {self.data_check_in} | {self.data_check_out} | {self.status_reserva}"
+        return f"Cliente: {self.dono_reserva} | {self.quarto_reservado} | {self.data_check_in} | {self.data_check_out} | {self.status_reserva}"
 
 
 class GerenciadorDeReserva(Cliente, Quarto, Reserva):
@@ -81,27 +81,27 @@ class GerenciadorDeReserva(Cliente, Quarto, Reserva):
         # Buscando clientes
         id_buscador = int(input("ID do cliente: "))
 
-        cliente_encotrado = None
+        cliente_encontrado = None
 
         for cliente in self.lista_clientes:
             if cliente.id_cliente == id_buscador:
-                cliente_encotrado = cliente
+                cliente_encontrado = cliente
 
-        if cliente_encotrado is None:
+        if cliente_encontrado is None:
             print("Cliente não encontrado.")
             return
         
         # Buscando quartos
         numero_buscador = input("Número do quarto: ")
 
-        quarto_encotrado = None
+        quarto_encontrado = None
 
         for quarto in self.lista_quartos:
             if quarto.numero_quarto == numero_buscador:
                 if quarto.status == "Disponível":
-                    quarto_encotrado = quarto
+                    quarto_encontrado = quarto
 
-        if quarto_encotrado is None:
+        if quarto_encontrado is None:
             print("Quarto não encontrado.")
             return
         
@@ -111,15 +111,15 @@ class GerenciadorDeReserva(Cliente, Quarto, Reserva):
 
         # Criando Reserva
         nova_reserva = Reserva(
-            dono_reseva=cliente_encotrado,
-            quarto_resevado=quarto_encotrado,
+            dono_reserva=cliente_encontrado,
+            quarto_reservado=quarto_encontrado,
             data_check_in=data_check_in,
             data_check_out=data_check_out,
             status_reserva="Ativa")
         
         self.historico_reservas.append(nova_reserva)
 
-        quarto_encotrado.status = "Ocupado"
+        quarto_encontrado.status = "Ocupado"
 
         print("Reserva criada com sucesso!")
 
@@ -127,43 +127,43 @@ class GerenciadorDeReserva(Cliente, Quarto, Reserva):
 
         id_buscador = int(input("ID do cliente: "))
 
-        reserva_encotrado = None
+        reserva_encontrada = None
 
         for reserva in self.historico_reservas:
 
             if reserva.dono_reserva.id_cliente == id_buscador:
-                reserva_encotrado = reserva
+                reserva_encontrada = reserva
 
-        if reserva_encotrado is None:
+        if reserva_encontrada is None:
             print("Reserva não encontrado.")
             return
 
-        print(f"Reserva atual: {reserva_encotrado}")
+        print(f"Reserva atual: {reserva_encontrada}")
 
         # Add datas
         nova_data_check_in = input("Nova Data de check-in (dd/mm/aaaa): ")
         nova_data_check_out = input("Nova Data de check-out (dd/mm/aaaa): ")
 
-        reserva_encotrado.data_check_in = nova_data_check_in
-        reserva_encotrado.data_check_out = nova_data_check_out
+        reserva_encontrada.data_check_in = nova_data_check_in
+        reserva_encontrada.data_check_out = nova_data_check_out
 
         print("Reserva modificada com sucesso!")
 
     def cancelar_reservas(self) -> None:
         id_buscador = int(input("ID do cliente: "))
 
-        reserva_encotrado = None
+        reserva_encontrada = None
 
         for reserva in self.historico_reservas:
             if reserva.dono_reserva.id_cliente == id_buscador:
-                reserva_encotrado = reserva
+                reserva_encontrada = reserva
 
-        if reserva_encotrado is None:
+        if reserva_encontrada is None:
             print("Reserva não encontrado.")
             return
 
-        reserva_encotrado.status_reserva = "Cancelada"
-        reserva_encotrado.quarto_resevado.status = "Disponível"
+        reserva_encontrada.status_reserva = "Cancelada"
+        reserva_encontrada.quarto_reservado.status = "Disponível"
 
         print("Reserva cancelada com sucesso!")
 
