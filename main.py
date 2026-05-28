@@ -4,7 +4,7 @@ class Cliente:
         self.id_cliente: int = id_cliente
         self.nome: str = nome
         self.telefone: str = telefone
-        self. email: str = email
+        self.email: str = email
 
     def __str__(self):
         return f"[ID: {self.id_cliente}] {self.nome} | {self.telefone} | {self.email}"
@@ -52,7 +52,7 @@ class GerenciadorDeReserva(Cliente, Quarto, Reserva):
 
         self.lista_quartos.append(novo_quarto)
 
-    def cadastro_clientes(self) -> None:
+    def cadastro_clientes(self) -> Cliente:
 
         print("-=-=-=-=-=-=-=Clientes=-=-==-=-=-=-=-")
         self.nome = input("Nome: ")
