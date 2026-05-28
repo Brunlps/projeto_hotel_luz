@@ -42,10 +42,10 @@ class GerenciadorDeReserva(Cliente, Quarto, Reserva):
         self.cnpj: str = cnpj
         self.endereco: str = endereco
         self.telefone: str = telefone
-        self.id_atual = int
-        self.lista_clientes = list[Cliente]
-        self.lista_quartos = list[Quarto]
-        self.historico_reservas = list[Reserva]
+        self.id_atual: int = 1
+        self.lista_clientes: list[Cliente] = []
+        self.lista_quartos: list[Quarto] = []
+        self.historico_reservas: list[Reserva] = []
 
     def quartos(self, numero_quarto: str, tipo_quarto: str, preco_diaria: float, status: str) -> None:
         novo_quarto = Quarto(numero_quarto, tipo_quarto, preco_diaria, status="Disponível")
