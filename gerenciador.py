@@ -8,6 +8,7 @@ class GerenciadorDeReserva():
         self.endereco: str = endereco
         self.telefone: str = telefone
         self.id_atual: int = 1
+        self.id_reserva_atual: int = 1
         self.lista_clientes: list[Cliente] = []
         self.lista_quartos: list[Quarto] = []
         self.historico_reservas: list[Reserva] = []
@@ -76,12 +77,15 @@ class GerenciadorDeReserva():
 
         # Criando Reserva
         nova_reserva = Reserva(
+            id_reserva=self.id_reserva_atual,
             dono_reserva=cliente_encontrado,
             quarto_reservado=quarto_encontrado,
             data_check_in=data_check_in,
             data_check_out=data_check_out,
             status_reserva="Ativa")
-        
+
+        self.id_reserva_atual += 1
+
         self.historico_reservas.append(nova_reserva)
 
         quarto_encontrado.status = "Ocupado"

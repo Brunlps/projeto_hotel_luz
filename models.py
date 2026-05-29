@@ -21,7 +21,8 @@ class Quarto:
 
 
 class Reserva:
-    def __init__(self, dono_reserva: Cliente, quarto_reservado: Quarto, data_check_in: str, data_check_out: str, status_reserva: str):
+    def __init__(self, id_reserva: int, dono_reserva: Cliente, quarto_reservado: Quarto, data_check_in: str, data_check_out: str, status_reserva: str):
+        self.id_reserva: int = id_reserva
         self.dono_reserva: Cliente = dono_reserva
         self.quarto_reservado: Quarto = quarto_reservado
         self.data_check_in: str = data_check_in
@@ -29,4 +30,4 @@ class Reserva:
         self.status_reserva: str = status_reserva
 
     def __str__(self) -> str:
-        return f"Cliente: {self.dono_reserva} | {self.quarto_reservado} | {self.data_check_in} | {self.data_check_out} | {self.status_reserva}"
+        return f"[Reserva ID: {self.id_reserva}] Cliente: {self.dono_reserva} | {self.quarto_reservado} | {self.data_check_in} | {self.data_check_out} | {self.status_reserva}"
