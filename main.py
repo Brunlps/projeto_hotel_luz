@@ -35,7 +35,7 @@ class Reserva:
         return f"Cliente: {self.dono_reserva} | {self.quarto_reservado} | {self.data_check_in} | {self.data_check_out} | {self.status_reserva}"
 
 
-class GerenciadorDeReserva(Cliente, Quarto, Reserva):
+class GerenciadorDeReserva():
 
     def __init__(self, nome: str, cnpj: str, endereco: str, telefone: str):
         self.nome: str = nome
