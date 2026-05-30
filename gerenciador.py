@@ -14,7 +14,7 @@ class GerenciadorDeReserva():
         self.historico_reservas: list[Reserva] = []
 
     def quartos(self, numero_quarto: str, tipo_quarto: str, preco_diaria: float, status: str) -> None:
-        novo_quarto = Quarto(numero_quarto, tipo_quarto, preco_diaria, status="Disponível")
+        novo_quarto = Quarto(numero_quarto, tipo_quarto, preco_diaria, status=status)
 
         self.lista_quartos.append(novo_quarto)
 
@@ -25,9 +25,9 @@ class GerenciadorDeReserva():
         self.email = input("E-mail: ")
         self.telefone = input("Telefone: ")
 
-        novo_cliente = Cliente(id_cliente= self.id_atual, 
-                               nome= self.nome, 
-                               telefone= self.telefone, 
+        novo_cliente = Cliente(id_cliente=self.id_atual,
+                               nome=self.nome,
+                               telefone=self.telefone,
                                email=self.email)
 
         self.lista_clientes.append(novo_cliente)
