@@ -1,4 +1,5 @@
 from models import Cliente, Quarto, Reserva
+from datetime import datetime
 
 
 class GerenciadorDeReserva():
@@ -70,7 +71,7 @@ class GerenciadorDeReserva():
         if quarto_encontrado is None:
             print("Quarto não encontrado.")
             return
-        
+
         # Add datas
         data_check_in = input("Data de check-in (dd/mm/aaaa): ")
         data_check_out = input("Data de check-out (dd/mm/aaaa): ")
@@ -144,7 +145,6 @@ class GerenciadorDeReserva():
             print(f"""
                   =-=-=-=-=Reservas-=-=-=-=
                   {reserva}""")
-
         return
 
     def get_clientes(self) -> None:
